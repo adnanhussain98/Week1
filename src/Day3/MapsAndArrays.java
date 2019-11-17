@@ -15,20 +15,20 @@ public class MapsAndArrays {
 		for (int i = 0; i < aString.length(); i++) {
 			// checks if it contains key e.g. a/b/c/d
 			if (charCounts.containsKey(aString.charAt(i))) {
-				
-				//gets previous value of the character
+
+				// gets previous value of the character
 				int count = charCounts.get(aString.charAt(i));
-				//increments on to the next number
+				// increments on to the next number
 				count++;
-				//charCounts puts 
+				// charCounts puts
 				charCounts.put(aString.charAt(i), count);
-				
+
 			} else {
-				//puts it in the HashMap and sets it to 1
+				// puts it in the HashMap and sets it to 1
 				charCounts.put(aString.charAt(i), 1);
 			}
 		}
-		//returns the charCount
+		// returns the charCount
 		return charCounts;
 
 	}

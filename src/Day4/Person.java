@@ -1,8 +1,8 @@
-package Day3;
+package Day4;
 
 import java.time.LocalDate;
 
-public class Person {
+public abstract class Person {
 
 	private String name;
 	private int birthYear;

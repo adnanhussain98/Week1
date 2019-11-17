@@ -17,5 +17,6 @@ public class CalculatorController {
 		// user can use the following operators, +, -, *, /
 		System.out.println(newCalc.allCalc(5, 5, "*"));
 	}
+	 
 
 }
