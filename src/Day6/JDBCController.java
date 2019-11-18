@@ -2,16 +2,17 @@ package Day6;
 
 import java.sql.SQLException;
 
-public class Controller {
+public class JDBCController {
 
 	public static void main(String[] args) {
 
-		VehicleDAO dao = new VehicleDAO();
-		
+		MyDAO dao = new MyDAO();
+
 		try {
-			dao.getVehicles();
-			//dao.insertVehicles();
-			dao.updateVehicle();
+			dao.getDVDs();
+			//dao.insertDVD();
+			//dao.deleteDVD();
+			//dao.updateDVD();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

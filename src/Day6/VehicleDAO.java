@@ -33,23 +33,24 @@ public class VehicleDAO {
 		// returns conn object
 		return conn;
 	}
-	
+
 	public void getVehicles() throws SQLException {
 		// makes the connection local
 		// not making it global gives you the connection when it's available
-		Connection vehicleConnection = getConnection();
-		//create a statement object
-		Statement statement = vehicleConnection.createStatement();
-		
-		//the return of query gets stored into ResultSet (rs is the local object)
+		Connection connection = getConnection();
+		// create a statement object
+		Statement statement = connection.createStatement();
+
+		// the return of query gets stored into ResultSet (rs is the local object)
 		String query1 = "SELECT * FROM vehicles";
 		System.out.println(query1);
-		
-		//the return of query gets stored into ResultSet (rs is the local object)
+
+		// the return of query gets stored into ResultSet (rs is the local object)
 		ResultSet rs = statement.executeQuery(query1);
-		
-		while(rs.next()) {
-			// declaring a int called id and storing the column name vehicle_id from the result set into the variable.
+
+		while (rs.next()) {
+			// declaring a int called id and storing the column name vehicle_id from the
+			// result set into the variable.
 			int id = rs.getInt("vehicle_id");
 			String make = rs.getString("make");
 			String model = rs.getString("model");
@@ -57,7 +58,35 @@ public class VehicleDAO {
 
 			System.out.println(id + " " + make + " " + model + " " + year);
 		}
-	
+
+	}
+
+	public void insertVehicles() throws SQLException {
+
+		Connection connection = getConnection();
+		Statement statement = connection.createStatement();
+
+		String sql = "INSERT INTO vehicles (vehicle_id, make, model, year, price, license_number, colour, number_doors, transmission, mileage, fuel_type, engine_size, body_style, condition, Notes )"
+				+ " VALUES (555, 'BMW', '4 Series', 2015, 18000, 'AD15 NXN', 'Black', 5, 'Automatic', 66000, 'Diesel', 2.0, 'Saloon', 'New', 'Best car in the world' );";
+		System.out.println(sql);
+
+		statement.executeUpdate(sql);
+		System.out.println("done");
+
+	}
+
+	public void updateVehicle() throws SQLException {
+
+		Connection connection = getConnection();
+		Statement statement = connection.createStatement();
+
+		String sql = "UPDATE vehicles " + "SET make = 'Bentley' " + " WHERE vehicle_id = 555";
+		System.out.println(sql);
+
+		statement.executeUpdate(sql);
+		System.out.println("done");
+
+		connection.close();
 	}
 
 }
