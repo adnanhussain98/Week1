@@ -24,7 +24,7 @@ public class BankController {
 		// object for balance and name
 		HashMap<Integer, BankAccount> bankOfAdnan = new HashMap<>();
 		// initialise scanner
-		Scanner sc = new Scanner(System.in);		
+		Scanner sc = new Scanner(System.in);
 
 		// creating bank accounts using the constructors
 		bankOfAdnan.put(123, new BankAccount(999999, "adnan"));
@@ -32,7 +32,6 @@ public class BankController {
 		bankOfAdnan.put(231, new BankAccount(456, "mo"));
 		bankOfAdnan.put(789, new BankAccount(85768, "iqra"));
 		bankOfAdnan.put(678, new BankAccount(42, "saffiyah"));
-		
 
 		while (true) {
 
@@ -42,9 +41,9 @@ public class BankController {
 			System.out.println("2 = create new account");
 			// user input
 			int choice = sc.nextInt();
-			sc.hasNextLine();
+			sc.nextLine();
 
-			//executes code block for entering account
+			// executes code block for entering account
 			if (choice == 1) {
 
 				// 1 for account num
@@ -54,22 +53,22 @@ public class BankController {
 				int accNo = sc.nextInt();
 				sc.nextLine();
 
-				//enters account if user enters an account number in HashMap
+				// enters account if user enters an account number in HashMap
 				if (bankOfAdnan.containsKey(accNo)) {
 					// name the while loop so we can break out of it when we're done
 					bankLoop: while (true) {
 
-						//gets account name by accessing variable through the account object
+						// gets account name by accessing variable through the account object
 						BankAccount account = bankOfAdnan.get(accNo);
-						//prints welcome message with the account holders name
+						// prints welcome message with the account holders name
 						System.out.println("Hi there " + account.getName());
-						//prints out the options menu
+						// prints out the options menu
 						System.out.println("d = deposit");
 						System.out.println("w = withdraw");
 						System.out.println("e = exit");
-						//allows user to type character
+						// allows user to type character
 						String option = sc.nextLine();
-						//initialising the amount to 0
+						// initialising the amount to 0
 						float amount = 0;
 
 						// switch statement as we know the options
@@ -98,18 +97,20 @@ public class BankController {
 				} else {
 					System.out.println("The account number" + accNo + "is invalid");
 				}
-			}else if (choice ==2){
+			} else if (choice == 2) {
 				System.out.println("What is your name?");
 				String enterName = sc.nextLine();
+				
 				System.out.println("How much do you want to deposit?");
 				int deposit = sc.nextInt();
-				sc.nextLine(); //this is needed for ints and floats
+				sc.nextLine(); // this is needed for ints and floats
+				
 				Random rnd = new Random();
-				int generateAccNo = rnd.nextInt(899)+100; 
+				int generateAccNo = rnd.nextInt(899) + 100;
 				bankOfAdnan.put(generateAccNo, new BankAccount(deposit, enterName));
+				
 
-			}
-			else {
+			} else {
 				System.out.println("This is not an option");
 			}
 		}
